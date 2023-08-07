@@ -23,7 +23,7 @@ def parameter_check(filepath):
         if "sep" not in config:
             config["sep"] = "\t"
 
-        if "mode" in config and config["mode"] in ["BD", "PI", "PR", "DPR"]:
+        if "mode" in config and config["mode"] in ["BD", "PI", "PR", "DPR", "GPI"]:
             if "locus_file" in config and os.path.exists(config["locus_file"]):
                 pass
             else:
@@ -33,6 +33,7 @@ def parameter_check(filepath):
                 if not os.path.exists(config["output"]):
                     pass
                 else:
+                    pass
                     v = input(f"'{config['output']}' directory already exists,  Do you want ot delete it ? [Y/N]: ")
                     if v in ["Y", "N"]:
                         if v == "Y":

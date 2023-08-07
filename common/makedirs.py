@@ -8,4 +8,5 @@ def makedirs(dirpath:str) -> dict:
 
         os.makedirs(dirpath)
     except Exception as e:
+        print(e)
         traceback.print_exc(e)

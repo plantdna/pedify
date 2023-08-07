@@ -4,7 +4,7 @@ import logging
 import sys
 import argparse
 
-from common import makedirs, parameter_check, build_dataset, pedigree_identify, pedigree_strucutal_analysis, generate_report, derived_pedigree_strucutal_analysis, derived_report
+from common import makedirs, parameter_check, build_dataset, pedigree_identify, pedigree_strucutal_analysis, generate_report, derived_pedigree_strucutal_analysis, derived_report, group_pedigree_identify
 
 
 def pedify():
@@ -38,6 +38,9 @@ def pedify():
 
         if config_data["mode"] == "PI":
             pedigree_identify(config_data)
+
+        if config_data["mode"] == "GPI":
+            group_pedigree_identify(config_data)
 
         if config_data["mode"] == "PR":
             df = pedigree_strucutal_analysis(config_data)
