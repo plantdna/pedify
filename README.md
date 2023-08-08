@@ -121,7 +121,7 @@ python3 pedify.py -c "config.json"
 |locus3|---|...|---|
 |locus4|-/A|...|-/A|
 
-## Examples for `config.json`
+## Examples of `config.json`
 
 ### Build the dataset
 
