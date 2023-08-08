@@ -1,4 +1,4 @@
-# Pedify Toolkit: Algorithm And Commend line program For Crop Pedigree Identify And Reconstruct.
+# Pedify Toolkit: Algorithm And Commend Line Program For Crop Pedigree Identify And Reconstruct.
 
 
 ## Dependence
@@ -13,7 +13,7 @@ This project was based on python3 environment. If your operating system does not
 
 > git clone https://github.com/plantdna/pedify.git
 
-#### OR
+<b>OR</b>
 
 > [download from here](https://github.com/plantdna/pedify/archive/refs/heads/main.zip)
 
@@ -33,7 +33,7 @@ source /venv/bin/activate
 python3 pedify.py -c "config.json"
 ```
 
-## config.json
+## About `config.json`
 > This is the parameter profile of the program, the implications and types of related parameters are shown:
 
 - `mode`
@@ -89,37 +89,6 @@ python3 pedify.py -c "config.json"
 |ancestorName|String|name of ancestor|true|
 |derivedlines|Dict|genotype files path of derivedlines suct as {"U8112": "./files/u8112.txt"}|true|
 |colors|Dict|set ancestor and derived color suct as {"ancestor": "#16C2C1", "derived": "#1777FF"}|true|
-
-
-## File Examples
-
-### sample genotype file
-
-> missing data use "---" by default; use "-" represent missing for InDel locus
-
-|locus|gt|
-|-----|--|
-|locus1|A/A|
-|locus2|A/T|
-|locus3|---|
-|locus4|-/A|
-
-### locus information file
-
-|locus|chr_id|position|HTP|
-|-----|------|--------|---|
-|locus1|1|3497|HTP0001|
-|...|...|...|....|
-|locusN|10|149576018|HTP6163|
-
-### group genotype file
-
-|locus|sample1|...|sample2|
-|-----|-------|---|-------|
-|locus1|A/A|...|A/A|
-|locus2|A/T|...|A/T|
-|locus3|---|...|---|
-|locus4|-/A|...|-/A|
 
 ## Examples of `config.json`
 
@@ -230,3 +199,38 @@ python3 pedify.py -c "config.json"
     "miss": "---"
 }
 ```
+
+## File Examples
+
+### sample genotype file
+
+> missing data use "---" by default; use "-" represent missing for InDel locus
+
+|locus|gt|
+|-----|--|
+|locus1|A/A|
+|locus2|A/T|
+|locus3|---|
+|locus4|-/A|
+
+### locus information file
+
+|locus|chr_id|position|HTP|
+|-----|------|--------|---|
+|locus1|1|3497|HTP0001|
+|...|...|...|....|
+|locusN|10|149576018|HTP6163|
+
+### group genotype file
+
+|locus|sample1|...|sample2|
+|-----|-------|---|-------|
+|locus1|A/A|...|A/A|
+|locus2|A/T|...|A/T|
+|locus3|---|...|---|
+|locus4|-/A|...|-/A|
+
+## About US
+- Technical Support: Beijing Maize Seed Testing Center Software R&D room
+- Address: Maize research center, Beijing academy of agricultural and forestry sciences, no.9 middle shuguang huayuan road, haidian district, Beijing.
+- Email: zhangyunlongfrank@163.com
