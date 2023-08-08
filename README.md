@@ -21,7 +21,7 @@ This project was based on python3 environment. If your operating system does not
 ### Step2: install dependent packages and activate virtual environment
 
 ``` bash
-cd pedify toolkit
+cd pedify
 python3 -m venv venv
 pip3 install -r requirements.txt
 source /venv/bin/activate
@@ -36,31 +36,32 @@ python3 pedify.py -c "config.json"
 ## config.json
 > This is the parameter profile of the program, the implications and types of related parameters are shown:
 
-- mode
+- `mode`
     - BD : build database
-    - PI : pedigree identify
+    - PI : individual pedigree identify
+    - GPI : group pedigree identify
     - PR : pedigree reconstruct
     - DPR : derived lines pedigree reconstruct
 
 |key|type|meaning|required|
 |---|----|-------|--------|
-|mode|String|analysis mode include ["BD", "PI", "PR", "DPR"]|true|
+|mode|String|analysis mode include ["BD", "PI", "GPI", "PR", "DPR"]|true|
 |locus_file|String|file path of locus information|true|
 |HTP|Boolean|whether to use HTP include [true, false]|false|
 |output|String|output file path|true|
 |miss|String|missing data default "---"|false|
 |cores|Int|number of CPU cores default 1|false|
 |sep|String|file separator default "\t"|false|
-|param|Dict||true|
+|`param`|Dict|Show below|true|
 
-### param list if mode is BD
+### if mode is `BD` the `param` are listed as below
 |key|type|meaning|required|
 |---|----|-------|--------|
 |genotypes|String|folder path of sample genotype files|true|
 |maf_limit|Float|default 0.05|false|
 |pic_limit|Float|default 0.02|false|
 
-### param list if mode is PI
+### if mode is `PI` the `param` are listed as below
 |key|type|meaning|required|
 |---|----|-------|--------|
 |target|String|genotype file path of target|true|
@@ -68,14 +69,20 @@ python3 pedify.py -c "config.json"
 |dataset|String|file path of dataset|true|
 |algorithm|String|the algorithm of predigree identification include ["WPI", "LPI"]|true|
 
-### param list if mode is PR
+### if mode is `GPI` the `param` are listed as below
+|key|type|meaning|required|
+|---|----|-------|--------|
+|target|String|group genotpe file path|true|
+|dataset|String|file path of dataset|true|
+
+### if mode is `PR` the `param` are listed as below
 |key|type|meaning|required|
 |---|----|-------|--------|
 |target|String|genotype file path of target|true|
 |ancestors|Dict|genotype files path of ancestors suct as {"U8112": "./files/u8112.txt"}|true|
 |colors|Dict|set ancestors color suct as {"U8112": "#fa8c16"}|true|
 
-### param list if mode is DPR
+### if mode is `DPR` the `param` are listed as below
 |key|type|meaning|required|
 |---|----|-------|--------|
 |ancestor|String|genotype file path of ancestor|true|
@@ -91,7 +98,7 @@ python3 pedify.py -c "config.json"
 > missing data use "---" by default; use "-" represent missing for InDel locus
 
 |locus|gt|
-|---|----|
+|-----|--|
 |locus1|A/A|
 |locus2|A/T|
 |locus3|---|
@@ -105,9 +112,16 @@ python3 pedify.py -c "config.json"
 |...|...|...|....|
 |locusN|10|149576018|HTP6163|
 
+### group genotype file
 
+|locus|sample1|...|sample2|
+|-----|-------|---|-------|
+|locus1|A/A|...|A/A|
+|locus2|A/T|...|A/T|
+|locus3|---|...|---|
+|locus4|-/A|...|-/A|
 
-## config.json Examples
+## Examples for `config.json`
 
 ### Build the dataset
 
@@ -125,7 +139,7 @@ python3 pedify.py -c "config.json"
 }
 ```
 
-### Pedigree Identify
+### Individual Pedigree Identify
 
 ```json
 {
@@ -137,6 +151,24 @@ python3 pedify.py -c "config.json"
         ],
         "dataset": "file path",
         "algorithm": "WPI"
+    },
+    "output": "folder path",
+    "locus_file": "./locus_info.txt",
+    "sep": "\t",
+    "HTP": true,
+    "miss": "---",
+    "cores": 5
+}
+```
+
+### Group Pedigree Identify
+
+```json
+{
+    "mode": "GPI",
+    "param": {
+        "target": "file path",
+        "dataset": "file path",
     },
     "output": "folder path",
     "locus_file": "./locus_info.txt",
